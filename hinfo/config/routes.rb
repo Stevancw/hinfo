@@ -1,9 +1,13 @@
 Hinfo::Application.routes.draw do
+  get "links/new"
+
   get "topics/index"
 
   ActiveAdmin.routes(self)
 
-  resources :topics
+  resources :topics do
+    resources :links
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 

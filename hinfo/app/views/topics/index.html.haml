@@ -2,7 +2,16 @@
   .span10 
     %h1 
       Welcome
+    %h3
       %ul
         - @topics.each do |topic|
           %li
             = topic.name
+            = link_to "Add a link", new_topic_link_path(topic)
+            %h5 
+              Links
+              %ol
+                - topic.links.each do |link|
+                  %li
+                    = link.path
+
