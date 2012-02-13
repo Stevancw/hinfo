@@ -1,0 +1,8 @@
+.row
+  .span10 
+    %h1 
+      Welcome
+      %ul
+        - @topics.each do |topic|
+          %li
+            = topic.name
