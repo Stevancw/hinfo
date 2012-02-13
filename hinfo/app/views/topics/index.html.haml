@@ -2,16 +2,23 @@
   .span10 
     %h1 
       Welcome
-    %h3
-      %ul
-        - @topics.each do |topic|
-          %li
-            = topic.name
-            = link_to "Add a link", new_topic_link_path(topic)
-            %h5 
-              Links
-              %ol
-                - topic.links.each do |link|
-                  %li
-                    = link.path
+    .accordion#accordion2
+      - @topics.each do |topic|
+        .accordion-group
+          .accordion-heading
+            %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
+              = topic.name
+              = link_to "Add a new link", new_topic_link_path(topic), :class => "btn"
+          %div{:id => topic.id, :class => "accordion-body in collapse" }
+            .accordion-inner
+              %h5 
+                - unless topic.links.empty?
+                  %ol
+                    - topic.links.each do |link|
+                      %li
+                        = "#{link.name} | #{link.path}"
+                - else
+                  %p 
+                    There are no links
+                    = link_to "Add one", new_topic_link_path(topic) 
 
