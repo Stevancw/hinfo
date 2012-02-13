@@ -1,0 +1,24 @@
+Welcome to Cut-Troat health information application
+====================================================
+
+This application is desigend to crowdsource the best links for a given topic on health information.
+
+##Submit a link
+
+Sign in with Twitter and submit a link that you feel is useful.
+
+##Vote on the best
+
+Vote for and use the links that you find most useful.
+
+##Only the best will survive
+
+The best links will make it. It is a competitive world out there.
+
+##Search for the best on a given topic
+
+Browse or search the list of topics and see the top links as voted for by you and your colleagues.
+
+##Share links with your friends
+
+Share the links with your friends... or not, maybe your're cut-throat.
