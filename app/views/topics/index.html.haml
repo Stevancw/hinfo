@@ -8,17 +8,19 @@
           .accordion-heading
             %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
               = topic.name
-              = link_to "Add a new link", new_topic_link_path(topic), :class => "btn"
           %div{:id => topic.id, :class => "accordion-body in collapse" }
             .accordion-inner
               %h5 
-                - unless topic.links.empty?
+                - if topic.links.empty?
+                  %p 
+                    There are no links
+                    = link_to "Add one", new_topic_link_path(topic) 
+                - else
                   %ol
                     - topic.links.each do |link|
                       %li
                         = "#{link.name} | #{link.path}"
-                - else
-                  %p 
-                    There are no links
-                    = link_to "Add one", new_topic_link_path(topic) 
 
+
+/ Add this in to a sidebar partial along with voting interface
+/= link_to "Add a new link", new_topic_link_path(topic), :class => "btn"
