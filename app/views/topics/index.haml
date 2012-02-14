@@ -20,4 +20,7 @@
                     - topic.links.each do |link|
                       %li
                         = "#{link.name} | #{link.path}"
-                  = link_to "Add a new link", new_topic_link_path(topic)
+
+
+/ Add this in to a sidebar partial along with voting interface
+/= link_to "Add a new link", new_topic_link_path(topic), :class => "btn"
