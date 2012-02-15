@@ -20,4 +20,7 @@
                     - topic.links.each do |link|
                       %li
                         = "#{link.name} | #{link.path}"
-                  = link_to "Add a new link", new_topic_link_path(topic)
+                  - if current_user      
+                    = link_to "Add a new link", new_topic_link_path(topic)
+                  - else
+                    = link_to "Please sign to add links", "/auth/twitter"

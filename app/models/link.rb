@@ -8,4 +8,7 @@ class Link < ActiveRecord::Base
 
   # links belong to a topic
   belongs_to :topic
+
+  # link belongs to a user
+  belongs_to :user
 end
