@@ -17,14 +17,15 @@
           %ul.nav.pull-right
             - if current_user
               %li
-                Welcome
-                =current_user.name
-                =link_to "Sign out", signout_path
+                = link_to "Sign out", signout_path
             -else
               %li
                 =link_to "Sign in with Twitter", "/auth/twitter"
     .container
       - if flash[:notice]
-        .alert.alert-error
-        = flash[:notice]
+        .alert.alert-info.alert_block
+          %a.close{:data => {:dismiss => "alert"}}
+            x
+          %h4.alert-heading
+            = flash[:notice]
       = yield
