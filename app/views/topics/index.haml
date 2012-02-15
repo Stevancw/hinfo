@@ -21,11 +21,10 @@
                     
                 - else
                   %ol
-                    - topic.links.each do |link|
+                    - topic.links.order('score DESC').each do |link|
                       %li
                         = "#{link.name} | #{link.path}"
-                        = "#{get_positive_review_count(link)} good"
-                        = "#{get_negative_review_count(link)} bad"
+                        = "Score #{link.score}"
                         - if current_user
                           - if already_rated?(link.id, current_user)
                             %p you have already voted on this link
