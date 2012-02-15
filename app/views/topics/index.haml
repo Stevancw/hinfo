@@ -21,7 +21,7 @@
                     
                 - else
                   %ol
-                    - topic.links.order('score DESC').each do |link|
+                    - topic.links.order('score DESC').limit(5).each do |link|
                       %li
                         = "#{link.name} | #{link.path}"
                         = "Score #{link.score}"
