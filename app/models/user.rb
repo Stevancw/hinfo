@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
 
 	# should have many links
+	has_many :ratings
 	has_many :links
+
 
 	def self.create_with_omniauth(auth)
 		create! do |user|

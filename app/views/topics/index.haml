@@ -13,13 +13,25 @@
               %h5 
                 - if topic.links.empty?
                   %p 
-                    There are no links
-                    = link_to "Add one", new_topic_link_path(topic) 
+                    There are no links currently
+                    - if current_user
+                      = link_to "Add one", new_topic_link_path(topic) 
+                    - else
+                      = link_to "Please signin to add links", "/auth/twitter"
+                    
                 - else
                   %ol
                     - topic.links.each do |link|
                       %li
                         = "#{link.name} | #{link.path}"
+                        = "#{get_positive_review_count(link)} good"
+                        = "#{get_negative_review_count(link)} bad"
+                        - if current_user
+                          - if already_rated?(link.id, current_user)
+                            %p you have already voted on this link
+                          - else
+                            = link_to "Like", link_ratings_path(:link_id => link.id), :method => :post
+                            = link_to "Hate", link_ratings_path(:link_id => link.id, :query => "bad"), :method => :post
                   - if current_user      
                     = link_to "Add a new link", new_topic_link_path(topic)
                   - else

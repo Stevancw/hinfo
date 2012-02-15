@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :check_user
+  helper_method :already_rated?
+  helper_method :get_positive_review_count
+  helper_method :get_negative_review_count
 
   private
 
@@ -16,6 +19,26 @@ class ApplicationController < ActionController::Base
   	else
   		redirect_to root_path, :notice => "Please login/signup" 
   	end
+  end
+
+  def already_rated?(link_id, user)
+    ratings = user.ratings
+    ratings.each do |rating|
+      if rating.link_id == link_id
+        return true
+      end
+    end
+    return false
+  end
+
+  def get_positive_review_count(link_id)
+    link = Link.find(link_id)
+    count = link.ratings.where(:vote => true).count
+  end
+
+  def get_negative_review_count(link_id)
+    link = Link.find(link_id)
+    count = link.ratings.where(:vote => false).count
   end
 
 end

@@ -11,4 +11,6 @@ class Link < ActiveRecord::Base
 
   # link belongs to a user
   belongs_to :user
+
+  has_many :ratings
 end
