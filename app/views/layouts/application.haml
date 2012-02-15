@@ -14,5 +14,17 @@
           %a.brand{:href => "/"} Cut-Throat Health
           %form.navbar-search.pull-left
             %input.search-query{:placeholder => "Search", :type => "text"}
+          %ul.nav.pull-right
+            - if current_user
+              %li
+                Welcome
+                =current_user.name
+                =link_to "Sign out", signout_path
+            -else
+              %li
+                =link_to "Sign in with Twitter", "/auth/twitter"
     .container
+      - if flash[:notice]
+        .alert.alert-error
+        = flash[:notice]
       = yield

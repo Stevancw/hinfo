@@ -9,6 +9,10 @@ Hinfo::Application.routes.draw do
     resources :links
   end
 
+  match "/auth/:provider/callback" => "sessions#create"
+  match "/signout" => "sessions#destroy", :as => :signout
+  match "/auth/failure" => "sessions#failure"
+
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   # The priority is based upon order of creation:

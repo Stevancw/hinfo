@@ -69,6 +69,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     has_scope (0.5.1)
+    hashie (1.2.0)
     hike (1.2.1)
     i18n (0.6.0)
     inherited_resources (1.2.2)
@@ -94,6 +95,15 @@ GEM
       polyamorous (~> 0.5.0)
     mime-types (1.17.2)
     multi_json (1.0.4)
+    oauth (0.4.5)
+    omniauth (1.0.2)
+      hashie (~> 1.2)
+      rack
+    omniauth-oauth (1.0.0)
+      oauth
+      omniauth (~> 1.0)
+    omniauth-twitter (0.0.8)
+      omniauth-oauth (~> 1.0)
     orm_adapter (0.0.6)
     pg (0.13.1)
     polyamorous (0.5.0)
@@ -156,6 +166,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   meta_search (>= 1.1.0.pre)
+  omniauth-twitter
   pg
   rails (= 3.2.1)
   sass-rails (~> 3.2.3)
