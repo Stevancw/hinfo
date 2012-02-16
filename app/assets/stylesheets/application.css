@@ -13,4 +13,9 @@
  *= require topics 
  *= require links 
 
+
 */
+
+body {
+	padding-top: 60px;
+}

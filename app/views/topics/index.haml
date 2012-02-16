@@ -1,13 +1,18 @@
 .row
+  .span10
+    %form.well.form-search
+      %input{:type => "text", :class => "input-large search-query"}
+      %button{:type => "submit", :class => "btn large"}
+        Search the cove!
+
+.row
   .span10 
-    %h1 
-      Welcome
     .accordion#accordion2
       - @topics.each do |topic|
         .accordion-group
           .accordion-heading
             %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
-              = topic.name
+              %h2= topic.name
           %div{:id => topic.id, :class => "accordion-body in collapse" }
             .accordion-inner
               %h5 
