@@ -9,11 +9,11 @@ class RatingsController < ApplicationController
 			@rating.user = current_user
 			if params[:query] == "bad"
 				@rating.vote = false
-				@link.score = @link.score - 1
+				@link.score = @link.score - 5
 				@link.save
 			else
 				@rating.vote = true
-				@link.score = @link.score + 1
+				@link.score = @link.score + 5
 				@link.save
 			end
 			if @rating.save

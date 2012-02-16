@@ -18,5 +18,12 @@ class LinksController < ApplicationController
     end
   end
 
+  def clicked
+    @link = Link.find(params[:id])
+    @link.score = @link.score + 1
+    @link.save
+    render :nothing => true
+  end
+
 
 end

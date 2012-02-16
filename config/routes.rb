@@ -8,6 +8,9 @@ Hinfo::Application.routes.draw do
 
   resources :links do
     resources :ratings
+    member do
+      post "clicked"
+    end
   end
 
   match "/auth/:provider/callback" => "sessions#create"

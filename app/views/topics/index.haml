@@ -23,7 +23,9 @@
                   %ol
                     - topic.links.order('score DESC').limit(5).each do |link|
                       %li
-                        = "#{link.name} | #{link.path}"
+                        %span.link
+                          %a{:href => "#{link.path}", "data-id" => link.id}
+                            = link.name
                         = "Score #{link.score}"
                         - if current_user
                           - if already_rated?(link.id, current_user)
