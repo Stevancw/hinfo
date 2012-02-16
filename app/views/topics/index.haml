@@ -24,7 +24,7 @@
                     - topic.links.order('score DESC').limit(5).each do |link|
                       %li
                         %span.link
-                          %a{:href => "#{link.path}", "data-id" => link.id}
+                          %a{:href => "#{link.path}", "data-id" => link.id, :target => "_blank"}
                             = link.name
                         = "Score #{link.score}"
                         - if current_user
