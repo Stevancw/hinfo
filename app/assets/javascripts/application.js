@@ -29,5 +29,4 @@ $(document).ready(function(){
 			alert("TODO: This will update the count")
 		})
 	})
-
 })
