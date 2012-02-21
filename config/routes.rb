@@ -13,6 +13,8 @@ Hinfo::Application.routes.draw do
     end
   end
 
+  resources :users
+
   match "/auth/:provider/callback" => "sessions#create"
   match "/signout" => "sessions#destroy", :as => :signout
   match "/auth/failure" => "sessions#failure"

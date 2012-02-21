@@ -10,7 +10,7 @@
   %body
     .navbar.navbar-fixed-top
       .navbar-inner
-        .container
+        .container-fluid.offset2
           %a.brand{:href => "/"} Cutthroat Health
           %ul.nav.pull-right
             - if current_user
@@ -19,11 +19,12 @@
             -else
               %li
                 =link_to "Sign in with Twitter", "/auth/twitter"
-    .container
+    .container-fluid.offset2
       - if flash[:notice]
-        .alert.alert-info.alert_block
-          %a.close{:data => {:dismiss => "alert"}}
-            x
-          %h4.alert-heading
-            = flash[:notice]
+        .row-fluid  
+          .alert.alert-info.alert_block
+            %a.close{:data => {:dismiss => "alert"}}
+              x
+            %h4.alert-heading
+              = flash[:notice]
       = yield

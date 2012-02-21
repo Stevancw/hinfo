@@ -1,11 +1,11 @@
-.row
+.row-fluid
   .span10
     %form.well.form-search
       %input{:type => "text", :class => "input-large search-query"}
       %button{:type => "submit", :class => "btn large"}
         Search the cove!
 
-.row
+.row-fluid
   .span10 
     .accordion#accordion2
       - @topics.each do |topic|
