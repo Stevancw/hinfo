@@ -1,6 +1,25 @@
 .row-fluid
-	%h1	Welcome to the profile page
-	%ul
-		= link_to image_tag( 'https://api.twitter.com/1/users/profile_image?screen_name=stevancw&size=bigger'), 'http://www.twitter.com/stevancw'
-		%h4
-			=@user.name
+	.span6.well
+		%h1	
+			Your profile
+.row-fluid
+	.span6
+		%h2
+			Your details
+		%ul.unstyled
+			%li
+				Name: 
+				= @user.name
+			%li
+				/ this is bad - as twitter api does not like it
+				= link_to image_tag( "https://api.twitter.com/1/users/profile_image?user_id=#{@user.uid}&size=bigger"), 'http://www.twitter.com/stevancw'
+	.span6
+		%h2 Enter more info
+		%p Form for more info r.e. user here
+		%p e.g. occupation, level, country etc
+
+.row-fluid
+	%h2.well Your links
+	%ol
+		- @user.links.order("score DESC").each do |link|
+			%li= "#{link.name} - #{link.score}"
