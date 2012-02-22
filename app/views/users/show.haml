@@ -1,16 +1,6 @@
 .row-fluid
 	%h1	Welcome to the profile page
-	%p
-		=@user.name
-
-
-/         <%= gravatar_for @user %>
-/       <%= @user.name %>
-/       <h1>
-/     </td>
-/     <td class="sidebar round">
-/       <strong>Name</strong> <%= @user.name %><br />
-/       <strong>URL</strong> <%= link_to user_path(@user), @user %>
-/     </td>
-/   </tr>
-/ </table>
+	%ul
+		= link_to image_tag( 'https://api.twitter.com/1/users/profile_image?screen_name=stevancw&size=bigger'), 'http://www.twitter.com/stevancw'
+		%h4
+			=@user.name
