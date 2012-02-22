@@ -23,10 +23,12 @@
                 =link_to "Sign in with Twitter", "/auth/twitter"
     .container-fluid.offset2
       - if flash[:notice]
-        .row-fluid  
-          .alert.alert-info.alert_block
-            %a.close{:data => {:dismiss => "alert"}}
-              x
-            %h4.alert-heading
-              = flash[:notice]
+        .row 
+          .span3.offset5
+            .alert.alert-info.alert_block
+              %a.close{:data => {:dismiss => "alert"}}
+                x
+              %h4.alert-heading
+                %i.icon-ok
+                = flash[:notice]
       = yield

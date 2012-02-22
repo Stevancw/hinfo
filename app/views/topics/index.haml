@@ -2,7 +2,7 @@
   .span10
     %form.well.form-search
       %input{:type => "text", :class => "input-large search-query"}
-      %button{:type => "submit", :class => "btn large"}
+      %button{:type => "submit", :class => "btn btn-success"}
         Search the cove!
 
 .row-fluid
@@ -11,8 +11,15 @@
       - @topics.each do |topic|
         .accordion-group
           .accordion-heading
-            %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
-              %h2= topic.name
+            .row
+              .span12
+                .row
+                  .span6
+                    %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
+                      %h2= topic.name
+                  .span6    
+                    - the_best_link = topic.links.order("score DESC").first
+                    %a{src: "#{the_best_link.path}", class: "btn", style: "margin-top:10px"} Only the best!
           %div{:id => topic.id, :class => "accordion-body in collapse" }
             .accordion-inner
               %h5 
@@ -25,25 +32,33 @@
                       = link_to "Please signin to add links", "/auth/twitter"
                     
                 - else
-                  %ol
+                  %div{:style => "padding: 30px;"}
                     - topic.links.order('score DESC').each do |link|
-                      %li
-                        %span.link
-                          %a{:href => "#{link.path}", "data-id" => link.id, :target => "_blank"}
-                            = link.name
-                        = "Score #{link.score}"
-                        - if current_user
-                          - if already_rated?(link.id, current_user)
-                            %p you have already voted on this link
-                          - else
-                            = link_to "Like", link_ratings_path(:link_id => link.id), :method => :post
-                            = link_to "Hate", link_ratings_path(:link_id => link.id, :query => "bad"), :method => :post
+                      .row{style: "padding: 10px; border-bottom: 0.5px solid gray;"}
+                        .span8
+                          .row
+                            .span4
+                              %p.link
+                                %a{:href => "#{link.path}", "data-id" => link.id, :target => "_blank", :style => "font-size: 1.6em;"}
+                                  = link.name
+                              %h6#user_info
+                                Submitted by
+                                = link_to link.user.name, user_path(link.user_id)     
+                            .span4
+                              - if current_user
+                                - if already_rated?(link.id, current_user)
+                                  / do nothing
+                                - else
+                                  = link_to link_ratings_path(:link_id => link.id), :method => :post, class: "btn btn-info" do
+                                    %i.icon-ok
+                                  = link_to link_ratings_path(:link_id => link.id, :query => "bad"), :method => :post, class: "btn btn-danger" do
+                                    %i.icon-remove
                   - if current_user      
-                    = link_to "Add a new link", new_topic_link_path(topic)
+                    = form_for(Link.new(:topic_id => topic.id), :remote => true)   do |f|
+                      = f.hidden_field :topic_id
+                      = f.text_field :name
+                      = f.text_field :path
+                      = f.submit "Submit", class: "btn"
                   - else
                     = link_to "Please sign to add links", "/auth/twitter"
-              = form_for(Link.new(:topic_id => topic.id), :remote => true)   do |f|
-                = f.hidden_field :topic_id
-                = f.text_field :name
-                = f.text_field :path
-                = f.submit
+              

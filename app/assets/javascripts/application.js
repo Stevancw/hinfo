@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 	$(".alert").alert();
 
-	$("span.link a").click(function(){
+	$("p.link a").click(function(){
 		link_id = $(this).data("id")
 		url = "/links/" + link_id + "/clicked"
 		$.post(url, function(){
