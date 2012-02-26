@@ -1,2 +1,11 @@
-alert("TODO: add to on the plank section");
+// create a new element
+var elementToBeAdded = "<%= escape_javascript( render :partial => "shared/link", :locals => { :link => @link }) %>"
+
+// append it to the topic links
+$("#topic_<%= @link.topic_id %>_links").append(elementToBeAdded);
+
+// fadeOut the div containing the form
+$("#topic_<%= @link.topic_id %>_form").fadeOut();
+
+
 

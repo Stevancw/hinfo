@@ -32,7 +32,7 @@
                     - else
                       = link_to "Please signin to add links", "/auth/twitter" 
                 - else
-                  %div{:style => "padding: 30px;"}
+                  %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
                     - topic.links.order('score DESC').each do |link|
                       = render partial: "shared/link", locals: {link: link}
                   - if current_user  
