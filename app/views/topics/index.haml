@@ -17,9 +17,10 @@
                   .span6
                     %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
                       %h2= topic.name
-                  .span6    
-                    - the_best_link = topic.links.order("score DESC").first
-                    %a{src: "#{the_best_link.path}", class: "btn", style: "margin-top:10px"} Only the best!
+                  .span6
+                    - if topic.links.count > 0    
+                      - the_best_link = topic.links.order("score DESC").first
+                      %a{src: "#{the_best_link.path}", class: "btn", style: "margin-top:10px"} Only the best!
           %div{:id => topic.id, :class => "accordion-body in collapse" }
             .accordion-inner
               %h5 
