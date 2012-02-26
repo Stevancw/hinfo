@@ -1,0 +1,19 @@
+.row{style: "padding: 10px; border-bottom: 0.5px solid gray;"}
+  .span8
+    .row
+      .span4
+        %p.link
+          %a{:href => "#{link.path}", "data-id" => link.id, :target => "_blank", :style => "font-size: 1.6em;"}
+            = link.name
+        %h6#user_info
+          Submitted by
+          = link_to link.user.name, user_path(link.user_id)     
+      .span4
+        - if current_user
+          - if already_rated?(link.id, current_user)
+            / do nothing
+          - else
+            = link_to link_ratings_path(:link_id => link.id), :method => :post, class: "btn btn-info" do
+              %i.icon-ok
+            = link_to link_ratings_path(:link_id => link.id, :query => "bad"), :method => :post, class: "btn btn-danger" do
+              %i.icon-remove
