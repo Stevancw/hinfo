@@ -1,0 +1,2 @@
+// replace the voting links with a acknowledgment
+$("#link_<%= @link.id %>").html("<%= escape_javascript( render :partial => "shared/link_voted") %>").fadeOut(5000);

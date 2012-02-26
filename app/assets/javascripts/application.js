@@ -26,7 +26,7 @@ $(document).ready(function(){
 		link_id = $(this).data("id")
 		url = "/links/" + link_id + "/clicked"
 		$.post(url, function(){
-			alert("TODO: This will update the count")
+			// this will update the score
 		})
 	})
 })
