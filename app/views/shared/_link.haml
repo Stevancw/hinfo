@@ -8,12 +8,14 @@
         %h6#user_info
           Submitted by
           = link_to link.user.name, user_path(link.user_id)     
-      .span4
+      .span4{id: "link_#{link.id}"}
         - if current_user
           - if already_rated?(link.id, current_user)
             / do nothing
           - else
-            = link_to link_ratings_path(:link_id => link.id), :method => :post, class: "btn btn-info" do
-              %i.icon-ok
-            = link_to link_ratings_path(:link_id => link.id, :query => "bad"), :method => :post, class: "btn btn-danger" do
-              %i.icon-remove
+            = link_to link_ratings_path(:link_id => link.id), :method => :post, remote: true, class: "btn" do
+              %i.icon-chevron-up
+              Vote up
+            = link_to link_ratings_path(:link_id => link.id, :query => "bad"), :method => :post, remote: true, class: "btn" do
+              %i.icon-chevron-down
+              Vote down
