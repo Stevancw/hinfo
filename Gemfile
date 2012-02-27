@@ -25,4 +25,4 @@ end
 
 gem 'jquery-rails'
 gem 'omniauth-twitter'
-
+gem 'omniauth-facebook'

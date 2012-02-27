@@ -39,6 +39,7 @@ GEM
     activesupport (3.2.1)
       i18n (~> 0.6)
       multi_json (~> 1.0)
+    addressable (2.2.7)
     arel (3.0.0)
     bcrypt-ruby (3.0.1)
     bourbon (1.3.6)
@@ -59,6 +60,10 @@ GEM
     erubis (2.7.0)
     execjs (1.3.0)
       multi_json (~> 1.0)
+    faraday (0.7.6)
+      addressable (~> 2.2)
+      multipart-post (~> 1.1)
+      rack (~> 1.1)
     fastercsv (1.5.4)
     formtastic (2.0.2)
       rails (~> 3.0)
@@ -95,12 +100,21 @@ GEM
       polyamorous (~> 0.5.0)
     mime-types (1.17.2)
     multi_json (1.0.4)
+    multipart-post (1.1.5)
     oauth (0.4.5)
+    oauth2 (0.5.2)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
     omniauth (1.0.2)
       hashie (~> 1.2)
       rack
+    omniauth-facebook (1.2.0)
+      omniauth-oauth2 (~> 1.0.0)
     omniauth-oauth (1.0.0)
       oauth
+      omniauth (~> 1.0)
+    omniauth-oauth2 (1.0.0)
+      oauth2 (~> 0.5.0)
       omniauth (~> 1.0)
     omniauth-twitter (0.0.8)
       omniauth-oauth (~> 1.0)
@@ -166,6 +180,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   meta_search (>= 1.1.0.pre)
+  omniauth-facebook
   omniauth-twitter
   pg
   rails (= 3.2.1)
