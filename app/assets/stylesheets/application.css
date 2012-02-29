@@ -19,3 +19,7 @@
 body {
 	padding-top: 60px;
 }
+
+.accordion-heading:hover{
+	background-color:#d7d7d7;
+}

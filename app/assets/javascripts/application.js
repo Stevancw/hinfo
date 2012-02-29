@@ -16,9 +16,9 @@
 
 
 $(document).ready(function(){
-	// $(".collapse").collapse({
-	// 	toggle: true
-	// });
+	$(".collapse").collapse({
+		toggle: false
+	});
 
 	$(".alert").alert();
 
