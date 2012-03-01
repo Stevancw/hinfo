@@ -25,8 +25,9 @@
             .accordion-inner
               %h5 
                 - if topic.links.empty?
+                  %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
+                    %h6 There are no links currently for this topic
                   %p 
-                    There are no links currently
                     - if current_user
                       = render partial: "shared/new_link_form", locals: {topic: topic}
                     - else
@@ -38,5 +39,5 @@
                   - if current_user  
                     = render partial: "shared/new_link_form", locals: {topic: topic}
                   - else
-                    = link_to "Please sign to add links", "/auth/twitter"
+                    = link_to "Please signin to add links", "/auth/twitter"
               
