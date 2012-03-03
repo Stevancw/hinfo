@@ -1,43 +1,51 @@
-.row-fluid
-  .span10
-    %form.well.form-search
-      %input{:type => "text", :class => "input-large search-query"}
-      %button{:type => "submit", :class => "btn btn-success"}
-        Search the cove!
+#topic-list
+  .row-fluid
+    .span10
+      %form.well.form-search
+        %input{:type => "text", :class => "input-large search-query search"}
+        %button{:type => "submit", :class => "btn btn-success"}
+          Search the cove!
 
-.row-fluid
-  .span10 
-    .accordion#accordion2
-      - @topics.each do |topic|
-        .accordion-group
-          .accordion-heading
-            .row
-              .span12
-                .row
-                  .span6
-                    %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
-                      %h2= topic.name
-                  .span6
-                    - if topic.links.count > 0    
-                      - the_best_link = topic.links.order("score DESC").first
-                      %a{src: "#{the_best_link.path}", class: "btn", style: "margin-top:10px"} Only the best!
-          %div{:id => topic.id, :class => "accordion-body in collapse" }
-            .accordion-inner
-              %h5 
-                - if topic.links.empty?
-                  %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
-                    %h6 There are no links currently for this topic
-                  %p 
-                    - if current_user
-                      = render partial: "shared/new_link_form", locals: {topic: topic}
-                    - else
-                      = link_to "Please signin to add links", "/auth/twitter" 
-                - else
-                  %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
-                    - topic.links.order('score DESC').each do |link|
-                      = render partial: "shared/link", locals: {link: link}
-                  - if current_user  
-                    = render partial: "shared/new_link_form", locals: {topic: topic}
-                  - else
-                    = link_to "Please signin to add links", "/auth/twitter"
-              
+  .row-fluid
+    .span10
+      .accordion#accordion2
+        %ul.list
+          - @topics.each do |topic|
+            %li
+              .accordion-group
+                .accordion-heading
+                  .row
+                    .span12
+                      .row
+                        .span6
+                          %a{:class => "accordion-toggle", "data-toggle" => "collapse", "data-parent" => "#accordion2", :href => "##{topic.id}"}
+                            %h2
+                              %span.topic-name 
+                                = topic.name
+                        .span6
+                          - if topic.links.count > 0    
+                            - the_best_link = topic.links.order("score DESC").first
+                            %a{src: "#{the_best_link.path}", class: "btn", style: "margin-top:10px"} Only the best!
+                %div{:id => topic.id, :class => "accordion-body in collapse" }
+                  .accordion-inner
+                    %h5 
+                      - if topic.links.empty?
+                        %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
+                          %h6 There are no links currently for this topic
+                        %p 
+                          - if current_user
+                            = render partial: "shared/new_link_form", locals: {topic: topic}
+                          - else
+                            = link_to "Please signin to add links", "/auth/twitter" 
+                      - else
+                        %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
+                          - topic.links.order('score DESC').each do |link|
+                            = render partial: "shared/link", locals: {link: link}
+                        - if current_user  
+                          = render partial: "shared/new_link_form", locals: {topic: topic}
+                        - else
+                          = link_to "Please signin to add links", "/auth/twitter"
+
+%script{ :type => 'text/javascript', :charset => 'utf-8' }
+  var options = {valueNames: [ 'topic-name' ]};
+  var List = new List('topic-list', options);
