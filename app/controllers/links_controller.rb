@@ -10,9 +10,21 @@ class LinksController < ApplicationController
   end
 
   def create
+
     @topic = Topic.find(params[:link][:topic_id])
+
+    # what should the score be
+    if @topic.links.count < 5
+      score = 0
+    else
+      last_link = @topic.links.order('score DESC').offset(4).first
+      score = (last_link.score - 12)
+    end
+
+    # create the link
     @link = @topic.links.create(params[:link])
     @link.user = current_user
+    @link.score = score
     if @link.save
       respond_to do |format|
         format.js

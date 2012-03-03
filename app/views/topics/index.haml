@@ -43,12 +43,20 @@
                             = link_to "Please signin to add links", "/auth/twitter" 
                       - else
                         %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
-                          - topic.links.order('score DESC').each do |link|
+                          - topic.links.order('score DESC').limit(5).each do |link|
                             = render partial: "shared/link", locals: {link: link}
                         - if current_user  
                           = render partial: "shared/new_link_form", locals: {topic: topic}
                         - else
                           = link_to "Please signin to add links", "/auth/twitter"
+                        %div{:class => "well", :id => "on-the-plank"}
+                          %h6 On the Plank
+                          - if topic.links.count <= 5
+                            = topic.links.count
+                            %p nothing for here
+                          - else
+                            - plank_links = topic.links.order('score DESC').offset(5).each do |link|
+                              = render partial: "shared/link", locals: {link: link}
 
 %script{ :type => 'text/javascript', :charset => 'utf-8' }
   var options = {valueNames: [ 'topic-name' ]};

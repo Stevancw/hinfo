@@ -5,6 +5,7 @@
         %p.link
           %a{:href => "#{link.path}", "data-id" => link.id, :target => "_blank", :style => "font-size: 1.6em;"}
             = link.name
+            = link.score
         %h6#user_info
           Submitted by
           = link_to link.user.name, user_path(link.user_id)     
