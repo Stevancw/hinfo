@@ -3,6 +3,14 @@
   - topic_name = topic.name
   - array << "#{topic_name}"
 
+
+.row-fluid
+  .span10
+    %ul.thumbnails
+      %li
+        %a{href: '#myModal', class: "btn", data:{toggle: "modal"}}
+          %img{src: "http://placekitten.com/900/200"}
+
 #topic-list
   .row-fluid
     .span10
@@ -60,3 +68,14 @@
 %script{ :type => 'text/javascript', :charset => 'utf-8' }
   var options = {valueNames: [ 'topic-name' ]};
   var List = new List('topic-list', options);
+
+.modal#myModal{style: "display: none;"}
+  .modal-header
+    %a{class: 'close', data:{dismiss: "modal"}}
+      x
+    %h3 Modal header
+  .modal-body
+    %iframe{:allowFullScreen => "", :frameborder => "0", :height => "281", :mozallowfullscreen => "", :src => "http://player.vimeo.com/video/32397612", :webkitAllowFullScreen => "", :width => "500"}
+  .modal-footer
+    %a{href: "#", class: 'btn', data:{dismiss: "modal"}}
+      Close
