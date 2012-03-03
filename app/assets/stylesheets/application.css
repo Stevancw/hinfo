@@ -23,3 +23,14 @@ body {
 .accordion-heading:hover{
 	background-color:#d7d7d7;
 }
+
+#search-box {
+	display: block;
+	margin: 0 auto;
+	width: 50%;
+	height: 2em;
+	font-size: 1.7em;
+	text-align: left;
+	font-family: Georgia;
+	font-style: italic;
+}
