@@ -10,10 +10,9 @@
 			%li
 				Name: 
 				= @user.name
-	.span6
-		%h2 Enter more info
-		%p Form for more info r.e. user here
-		%p e.g. occupation, level, country etc
+			%li
+				Biography:
+				= best_in_place @user,:bio, type: :textarea
 
 .row-fluid
 	%h2.well Your links

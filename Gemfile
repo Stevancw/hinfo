@@ -27,3 +27,4 @@ end
 gem 'jquery-rails'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
+gem 'best_in_place'
