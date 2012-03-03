@@ -18,4 +18,9 @@
 	%h2.well Your links
 	%ol
 		- @user.links.order("score DESC").each do |link|
-			%li= "#{link.name} - #{link.score}"
+			%li="#{link.topic.name} #{link.name}"
+			.progress.progress-info.progress-striped
+				- max_score = link.topic.links.order("score DESC").first.score.to_f
+				- current_score = link.score.to_f
+				- progress = ((current_score/max_score)* 100.0).to_f
+				.bar{:style => "width: #{progress}%;"}
