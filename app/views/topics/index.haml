@@ -1,15 +1,18 @@
+- array = []
+- Topic.select(:name).each do |topic|
+  - topic_name = topic.name
+  - array << "#{topic_name}"
+
 #topic-list
   .row-fluid
     .span10
       %form.well.form-search
-        %input{:type => "text", :class => "input-large search-query search"}
-        %button{:type => "submit", :class => "btn btn-success"}
-          Search the cove!
+        %input{:type => "text", :class => "input-large search-query search", :placeholder => "type to search...", :data => {:provide => "typeahead", :items => "4", :source => "#{array}"}}
 
   .row-fluid
     .span10
       .accordion#accordion2
-        %ul.list
+        %ul.list.unstyled
           - @topics.each do |topic|
             %li
               .accordion-group
@@ -31,7 +34,8 @@
                     %h5 
                       - if topic.links.empty?
                         %div{:style => "padding: 30px;", id: "topic_#{topic.id}_links"}
-                          %h6 There are no links currently for this topic
+                          %h6{id: "topic_#{topic.id}_no_link_message"}
+                            There are no links currently for this topic
                         %p 
                           - if current_user
                             = render partial: "shared/new_link_form", locals: {topic: topic}
