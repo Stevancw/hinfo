@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 
 	$(".collapse").collapse({
-		toggle: false
+		toggle: true
 	});
 
 	$(".alert").alert();
@@ -39,6 +39,12 @@ $(document).ready(function(){
 		url = $(this).attr('src');
 		window.open(url);
 	});
+
+	$("form.well").bind("submit", function(event) {
+		// alert("form submitted");
+		event.preventDefault();
+		$(".accordion-toggle").click();
+	})
 
 
 
