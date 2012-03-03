@@ -54,7 +54,7 @@
                           - if topic.links.count <= 5
                             / do nothing
                           - else
-                            - plank_links = topic.links.order('score DESC').offset(5).each do |link|
+                            - plank_links = topic.links.where(:created_at => (Time.now - 2.weeks)..Time.now).order('score DESC').offset(5).each do |link|
                               = render partial: "shared/link", locals: {link: link}
 
 %script{ :type => 'text/javascript', :charset => 'utf-8' }
