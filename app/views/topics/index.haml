@@ -28,7 +28,7 @@
                         .span6
                           - if topic.links.count > 0    
                             - the_best_link = topic.links.order("score DESC").first
-                            %a{src: "#{the_best_link.path}", class: "btn", style: "margin-top:10px"} Only the best!
+                            %btn{src: "#{the_best_link.path}", class: "btn", style: "margin-top:10px"} Only the best!
                 %div{:id => topic.id, :class => "accordion-body in collapse" }
                   .accordion-inner
                     %h5 

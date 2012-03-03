@@ -30,4 +30,13 @@ $(document).ready(function(){
 			// this will update the score
 		})
 	})
+
+	// bind click event to btn.btn and load url
+	$('btn.btn').click(function(){
+		url = $(this).attr('src');
+		window.open(url);
+	});
+
+
+
 })
