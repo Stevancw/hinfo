@@ -1,26 +1,20 @@
 .row-fluid
-	.span6.well
-		%h1	
-			Your profile
-.row-fluid
+	.span3
+		.user_details.well
+			%h5 Name
+			%p= @user.name
+			%h5 Biography
+			- if current_user == @user
+				%p= best_in_place @user,:bio, type: :textarea
+			- else
+				%p= @user.bio
 	.span6
-		%h2
-			Your details
-		%ul.unstyled
-			%li
-				Name: 
-				= @user.name
-			%li
-				Biography:
-				= best_in_place @user,:bio, type: :textarea
+		%ol
+			- @user.links.order("score DESC").each do |link|
+				%li="#{link.topic.name} #{link.name}"
+				.progress.progress-info.progress-striped
+					- max_score = link.topic.links.order("score DESC").first.score.to_f
+					- current_score = link.score.to_f
+					- progress = ((current_score/max_score)* 100.0).to_f
+					.bar{:style => "width: #{progress}%;"}
 
-.row-fluid
-	%h2.well Your links
-	%ol
-		- @user.links.order("score DESC").each do |link|
-			%li="#{link.topic.name} #{link.name}"
-			.progress.progress-info.progress-striped
-				- max_score = link.topic.links.order("score DESC").first.score.to_f
-				- current_score = link.score.to_f
-				- progress = ((current_score/max_score)* 100.0).to_f
-				.bar{:style => "width: #{progress}%;"}
