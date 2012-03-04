@@ -50,8 +50,6 @@ $(document).ready(function(){
 		// alert("form submitted");
 		event.preventDefault();
 		$(".accordion-toggle").click();
-	})
-
-
+	});
 
 })
