@@ -1,5 +1,5 @@
 .well
 	%h6 Please signin to add links
-	=link_to "Sign in with Twitter", "/auth/twitter"
-	|  
-	=link_to "Sign in with Facebook", "/auth/facebook"
+	#social-icon.clearfix()
+		= link_to image_tag('twitter.png'), '/auth/twitter'
+		= link_to image_tag('facebook.png'), '/auth/facebook'

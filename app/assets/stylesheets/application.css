@@ -34,3 +34,15 @@ body {
 	font-family: Georgia;
 	font-style: italic;
 }
+
+#social-icon img {
+	height: 3em;
+	width: auto;
+	float: left;
+	padding-top: 0.8em;
+	margin: 0.4em 0.6em -0.8em 0.6em;
+}
+
+#signin-status {
+	margin: 0 20px;
+}
