@@ -48,7 +48,7 @@
                           - if current_user
                             = render partial: "shared/new_link_form", locals: {topic: topic}
                           - else
-                            = link_to "Please signin to add links", "/auth/twitter" 
+                            = render partial: "shared/login_links"
                       - else
                         %div{:style => "padding: 30px;"}
                           - topic.links.order('score DESC').limit(5).each do |link|
@@ -56,7 +56,7 @@
                         - if current_user  
                           = render partial: "shared/new_link_form", locals: {topic: topic}
                         - else
-                          = link_to "Please signin to add links", "/auth/twitter"
+                          = render partial: "shared/login_links"
                         %div{:class => "well", id: "topic_#{topic.id}_links"}
                           %h6 On the Plank
                           - if topic.links.count <= 5
