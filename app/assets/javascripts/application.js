@@ -19,13 +19,15 @@
 
 $(document).ready(function(){
 
-
+	// set the default behaviour of the dropdown boxes
 	$(".collapse").collapse({
 		toggle: true
 	});
 
 	$(".alert").alert();
 
+
+	// a little ajax call to record clicks on links in the database
 	$("p.link a").click(function(){
 		link_id = $(this).data("id")
 		url = "/links/" + link_id + "/clicked"
@@ -34,13 +36,17 @@ $(document).ready(function(){
 		})
 	})
 
+	// nasty hack! but works...
 	// bind click event to btn.btn and load url
 	$('btn.btn').click(function(){
 		url = $(this).attr('src');
 		window.open(url);
 	});
 
-	$("form.well").bind("submit", function(event) {
+	// bind the submit event for the top search box
+	// call a function that prevents page refresh
+	// and simulates click on an accordion
+	$("form.global").bind("submit", function(event) {
 		// alert("form submitted");
 		event.preventDefault();
 		$(".accordion-toggle").click();
