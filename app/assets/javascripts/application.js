@@ -52,4 +52,19 @@ $(document).ready(function(){
 		$(".accordion-toggle").click();
 	});
 
+	//tooltip for the link name field
+	$("input.name_field").tooltip({
+		title: "Make it memorable and descriptive e.g. NICE guidelines",
+		placement: 'bottom',
+		trigger: 'focus'
+	})
+
+	//tooltip for the link path field
+	$("input.path_field").tooltip({
+		title: "Always include the full url e.g. http://www.google.com",
+		placement: 'top',
+		trigger: 'focus'
+	})
+
+
 })
