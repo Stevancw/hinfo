@@ -38,7 +38,9 @@ class LinksController < ApplicationController
     @link = Link.find(params[:id])
     @link.score = @link.score + 1
     @link.save
-    render :nothing => true
+    respond_to do |format|
+      format.js
+    end
   end
 
 
